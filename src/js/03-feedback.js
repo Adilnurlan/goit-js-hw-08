@@ -5,9 +5,9 @@ const form = document.querySelector('.feedback-form');
 form.addEventListener('input', throttle(onFormInput, 500));
 form.addEventListener('submit', onFormSubmit);
 
-populateOutput();
-
 let formData = {};
+
+populateOutput();
 
 function onFormSubmit(event) {
   event.preventDefault();
@@ -26,6 +26,9 @@ function onFormInput(event) {
 function populateOutput() {
   const savedInput = localStorage.getItem('feedback-form-state');
   const parsedInput = JSON.parse(savedInput);
+  if (parsedInput) {
+    formData = parsedInput;
+  }
   for (key in parsedInput) {
     if (parsedInput.hasOwnProperty(key)) {
       form[key].value = parsedInput[key];

@@ -26,7 +26,7 @@ function onFormInput(event) {
 function populateOutput() {
   const savedInput = localStorage.getItem('feedback-form-state');
   const parsedInput = JSON.parse(savedInput);
-  for (key in parsedInput) {
+  for (const key in parsedInput) {
     if (parsedInput.hasOwnProperty(key)) {
       form[key].value = parsedInput[key];
     }
